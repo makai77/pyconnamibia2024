@@ -1,0 +1,99 @@
+
+
+
+
+{% extends '_base.html' %}
+{% load crispy_forms_tags static %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+<style>
+  body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-attachment: fixed;
+      background-size: cover;
+  }
+
+  .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 400px;
+      margin: 5% auto;
+  }
+
+  .login-card h2 {
+      color: #333;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+  }
+
+  .btn-success {
+      background: #4caf50;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+  }
+
+  .btn-success:hover {
+      background: #45a049;
+  }
+
+  .btn-outline-secondary {
+      border: 1px solid #ddd;
+      color: #333;
+      padding: 10px 20px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+  }
+
+  .btn-outline-secondary:hover {
+      background: #f8f9fa;
+      border-color: #ccc;
+  }
+
+  .passkey-icon {
+      height: 24px;
+      margin-right: 8px;
+      filter: brightness(0.8);
+  }
+
+  
+</style>
+
+
+
+<div class="login-card">
+    <h2 class="text-center">Login</h2>
+    <form method="post" id="loginForm">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="hidden" name="passkeys" id="passkeys">
+        
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <button class="btn btn-success" type="submit">Log in</button>
+            <button type="button" class="btn btn-dark" onclick="authn('loginForm')">
+                <img src="{% static 'passkeys/imgs/FIDO-Passkey_Icon-White.png' %}" class="passkey-icon">
+                Use Passkey
+            </button>
+        </div>
+    </form>
+</div>
+
+{% include 'passkeys.js' %}
+<script>
+    // Enable Conditional UI
+    window.onload = checkConditionalUI('loginForm');
+    
+    // Add webauthn autocomplete to username field
+    document.addEventListener('DOMContentLoaded', function() {
+        const usernameField = document.querySelector('input[name="username"]');
+        if (usernameField) {
+            usernameField.autocomplete = "username webauthn";
+        }
+    });
+</script>
+{% endblock content %}

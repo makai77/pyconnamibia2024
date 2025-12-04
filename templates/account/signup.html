@@ -1,0 +1,147 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags static %}
+
+{% block title %}Sign up for Passkey Demos{% endblock %}
+
+{% block content %}
+<div class="signup-section text-center">
+  <div class="container">
+    <h1 class="display-4 animate__animated animate__fadeInDown">Learn <span class="highlight">Passkeys</span></h1>
+    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+      Create your account and start your journey with us.
+    </p>
+
+    <div class="signup-form animate__animated animate__fadeInUp animate__delay-2s text-light">
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary btn-lg w-100 mt-3" type="submit">Sign up</button>
+      </form>
+    </div>
+
+    <div class="mt-4 animate__animated animate__fadeInUp animate__delay-3s">
+      <p class="text-muted">Already have an account? <a href="{% url 'account_login' %}" class="text-decoration-none text-primary">Log in</a></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Signup Section Styles */
+  .signup-section {
+    background: linear-gradient(135deg, #1f1c2c, #3a2c4f);
+    color: #fff;
+    padding: 100px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signup-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .signup-section .highlight {
+    color: #6a11cb;
+    font-weight: 800;
+  }
+
+  .signup-section .lead {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+  }
+
+  .signup-section .signup-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .signup-section .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .signup-section .form-control:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #6a11cb;
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+  }
+
+  .signup-section .btn-primary {
+    background: #6a11cb;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .signup-section .btn-primary:hover {
+    background: #4a0d8a;
+  }
+
+  .signup-section .text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .signup-section a {
+    color: #6a11cb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .signup-section a:hover {
+    color: #4a0d8a;
+  }
+
+  /* Animations */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate__fadeInDown {
+    animation: fadeInDown 1s ease-out;
+  }
+
+  .animate__fadeInUp {
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .animate__delay-1s {
+    animation-delay: 1s;
+  }
+
+  .animate__delay-2s {
+    animation-delay: 2s;
+  }
+
+  .animate__delay-3s {
+    animation-delay: 3s;
+  }
+</style>
+{% endblock content %}
