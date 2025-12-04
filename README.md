@@ -1,12 +1,6 @@
-# Lithium: A Django-Powered Boilerplate
-Lithium is a batteries-included Django starter project with everything you need to start coding, including user authentication, static files, default styling, debugging, DRY forms, custom error pages, and more.
+# Integrating Passkeys into Django Applications
 
-> This project was formerly known as _DjangoX_ but was renamed to _Lithium_ in November 2024.
-
-https://github.com/user-attachments/assets/8698e9dd-1794-4f96-9c3f-85add17e330b
-
-## 👋 Free Newsletter
-[Sign up for updates](https://buttondown.com/lithiumsaas) to the free and upcoming premium SaaS version!
+This project contains the code and resources for the talk **"Integrating Passkeys into Django Applications"** given by **Mr. Makai Kahilu** at **Pyconnabia in February 2025**.
 
 ## 🚀 Features
 - Django 5.1 & Python 3.13
@@ -22,18 +16,11 @@ https://github.com/user-attachments/assets/8698e9dd-1794-4f96-9c3f-85add17e330b
 * **[Installation](#installation)**
   * [uv](#uv)
   * [Docker](#docker)
-* [Next Steps](#next-steps)
-* [Contributing](#contributing)
-* [Support](#support)
 * [License](#license)
 
 ## 📖 Installation
-Lithium can be installed via Pip or Docker. To start, clone the repo to your local computer and change into the proper directory.
 
-```
-$ git clone https://github.com/wsvincent/lithium.git
-$ cd lithium
-```
+The project can be installed via Pip or Docker. To start, clone the repo to your local computer and change into the proper directory.
 
 ### uv
 You can use [uv](https://docs.astral.sh/uv/) to create a dedicated virtual environment.
@@ -42,7 +29,7 @@ You can use [uv](https://docs.astral.sh/uv/) to create a dedicated virtual envir
 $ uv sync
 ```
 
-Then run `migrate` to configure the initial database. The command `createsuperuser` will create a new superuser account for accessing the admin. Execute the `runserver` commandt o start up the local server.
+Then run `migrate` to configure the initial database. The command `createsuperuser` will create a new superuser account for accessing the admin. Execute the `runserver` command to start up the local server.
 
 ```
 $ uv run manage.py migrate
@@ -52,7 +39,7 @@ $ uv run manage.py runserver
 ```
 
 ### Pip
-To use Pip, create a new virtual environment and then install all packages hosted in `requirements.txt`. Run `migrate` to configure the initial database. and `createsuperuser` to create a new superuser account for accessing the admin. Execute the `runserver` commandt o start up the local server.
+To use Pip, create a new virtual environment and then install all packages hosted in `requirements.txt`. Run `migrate` to configure the initial database, and `createsuperuser` to create a new superuser account for accessing the admin. Execute the `runserver` command to start up the local server.
 
 ```
 (.venv) $ pip install -r requirements.txt
@@ -98,24 +85,6 @@ $ docker compose exec web python manage.py migrate
 $ docker compose exec web python manage.py createsuperuser
 # Load the site at http://127.0.0.1:8000 or http://127.0.0.1:8000/admin for the admin
 ```
-
-## Next Steps
-
-- Add environment variables. There are multiple packages but I personally prefer [environs](https://pypi.org/project/environs/).
-- Add [gunicorn](https://pypi.org/project/gunicorn/) as the production web server.
-- Update the [EMAIL_BACKEND](https://docs.djangoproject.com/en/4.0/topics/email/#module-django.core.mail) and connect with a mail provider.
-- Make the [admin more secure](https://opensource.com/article/18/1/10-tips-making-django-admin-more-secure).
-- `django-allauth` supports [social authentication](https://django-allauth.readthedocs.io/en/latest/providers.html) if you need that.
-
-I cover all of these steps in tutorials and premium courses over at [LearnDjango.com](https://learndjango.com).
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome! See [CONTRIBUTING.md](https://github.com/wsvincent/lithium/blob/master/CONTRIBUTING.md).
-
-## ⭐️ Support
-
-Give a ⭐️  if this project helped you!
 
 ## License
 
